@@ -23,6 +23,7 @@ RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install softwa
 RUN    apt-get -y install openssh-server
 RUN    apt-get -y autoclean
 RUN    echo "root:shuai6563" | chpasswd
+RUN    service ssh restart
 RUN    sudo apt-add-repository --yes ppa:webupd8team/java; apt-get --yes update
 RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
        echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
@@ -39,9 +40,13 @@ RUN    chmod +x /start
 
 # 25565 is for minecraft
 EXPOSE 25565
+EXPOSE 22
 
 # /data contains static files and database
 VOLUME ["/data"]
+
+#start sshd
+CMD    ["service","ssh","restart"]
 
 # /start runs it.
 CMD    ["/start"]
