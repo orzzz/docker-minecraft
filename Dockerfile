@@ -20,6 +20,9 @@ ENV    DEBIAN_FRONTEND noninteractive
 
 # Download and install everything from the repos.
 RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install software-properties-common
+RUN    apt-get -y install openssh-server
+RUN    apt-get -y autoclean
+RUN    echo "root:shuai6563" | chpasswd
 RUN    sudo apt-add-repository --yes ppa:webupd8team/java; apt-get --yes update
 RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
        echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
