@@ -9,7 +9,7 @@
 
 if [ ! -f /data/minecraft_server.jar ]
 then
-    curl "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.3/minecraft_server.1.8.3.jar" -o /data/minecraft_server.jar
+    curl "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.7/minecraft_server.1.8.7.jar" -o /data/minecraft_server.jar
 fi
 
 if [ ! -f /data/eula.txt ]
@@ -17,5 +17,5 @@ then
     echo "eula=true" > /data/eula.txt
 fi
 
-cd /data/; java -Xmx2G -jar minecraft_server.jar nogui
+cd /data/; java -Xmx450 -jar minecraft_server.jar nogui
 
