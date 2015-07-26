@@ -17,6 +17,8 @@ FROM   ubuntu:14.04
 # Make sure we don't get notifications we can't answer during building.
 ENV    DEBIAN_FRONTEND noninteractive
 
+# /data contains static files and database
+VOLUME ["/data"]
 
 # Download and install everything from the repos.
 RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install software-properties-common axel
@@ -41,9 +43,6 @@ RUN    apt-get -y autoclean
 # 25565 is for minecraft
 EXPOSE 25565
 EXPOSE 22
-
-# /data contains static files and database
-VOLUME ["/data"]
 
 # /start runs it.
 CMD    ["/run.sh"]
