@@ -45,4 +45,4 @@ EXPOSE 22
 VOLUME ["/data"]
 
 # /start runs it.
-CMD    ["/run"]
+CMD    ["/run.sh"]
