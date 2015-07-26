@@ -33,7 +33,7 @@ ADD    ./plugins /data/plugins
 
 # Fix all permissions
 RUN    chmod +x /*.sh
-RUN    axel -n 10 "http://www.spigotdl.com/jenkins/job/Spigot/lastSuccessfulBuild/artifact/BuildTools/spigot-1.8.7-R0.1-SNAPSHOT.jar" -O /data/minecraft_server.jar
+RUN    axel -n 10 "http://www.spigotdl.com/jenkins/job/Spigot/lastSuccessfulBuild/artifact/BuildTools/spigot-1.8.7-R0.1-SNAPSHOT.jar" -o /data/minecraft_server.jar
 RUN    echo "eula=true" > /data/eula.txt
 RUN    apt-get -y autoclean
 
