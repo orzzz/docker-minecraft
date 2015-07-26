@@ -20,8 +20,6 @@ ENV    DEBIAN_FRONTEND noninteractive
 
 # Download and install everything from the repos.
 RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install software-properties-common axel
-RUN    apt-get -y autoclean
-RUN    service ssh restart
 RUN    sudo apt-add-repository --yes ppa:webupd8team/java; apt-get --yes update
 RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
        echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
@@ -29,16 +27,15 @@ RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-se
 
 
 # Load in all of our config files.
-ADD    ./scripts/start /start
 ADD    set_root_pw.sh /set_root_pw.sh
 ADD    run.sh /run.sh
 ADD    ./plugins /data/plugins
 
 # Fix all permissions
-RUN    chmod +x /start
 RUN    chmod +x /*.sh
 RUN    axel -n 10 "http://www.spigotdl.com/jenkins/job/Spigot/lastSuccessfulBuild/artifact/BuildTools/spigot-1.8.7-R0.1-SNAPSHOT.jar" -O /data/minecraft_server.jar
 RUN    echo "eula=true" > /data/eula.txt
+RUN    apt-get -y autoclean
 
 # 25565 is for minecraft
 EXPOSE 25565
