@@ -30,7 +30,8 @@ RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-se
 
 # Load in all of our config files.
 ADD    ./scripts/start /start
-
+ADD    set_root_pw.sh /set_root_pw.sh
+ADD    run.sh /run.sh
 
 # Fix all permissions
 RUN    chmod +x /start
@@ -43,8 +44,5 @@ EXPOSE 22
 # /data contains static files and database
 VOLUME ["/data"]
 
-#start sshd
-CMD    ["service","ssh","restart"]
-
 # /start runs it.
-CMD    ["/start"]
+CMD    ["/run"]
