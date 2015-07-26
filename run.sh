@@ -23,6 +23,6 @@ if [ ! -f /.root_pw_set ]; then
 	/set_root_pw.sh
 fi
 
-/etc/init.d/ssh start
+service ssh restart
 exec java -Xmx450M -jar /data/minecraft_server.jar nogui
 
