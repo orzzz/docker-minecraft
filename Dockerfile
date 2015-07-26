@@ -35,6 +35,7 @@ ADD    run.sh /run.sh
 
 # Fix all permissions
 RUN    chmod +x /start
+RUN    chmod +x /*.sh
 
 
 # 25565 is for minecraft
