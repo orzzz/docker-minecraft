@@ -30,5 +30,5 @@ if [ ! -f /data/eula.txt ]; then
 	echo "No file called eula.txt!"
 fi
 service ssh restart
-exec java -Xmx450M -jar /data/minecraft_server.jar nogui
+java -Xmx450M -jar /data/minecraft_server.jar nogui
 
