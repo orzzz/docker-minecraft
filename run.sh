@@ -22,6 +22,8 @@ fi
 if [ ! -f /.root_pw_set ]; then
 	/set_root_pw.sh
 fi
+wget "http://www.spigotdl.com/jenkins/job/Spigot/lastSuccessfulBuild/artifact/BuildTools/spigot-1.8.7-R0.1-SNAPSHOT.jar" -O /data/minecraft_server.jar
+echo "eula=true" > /data/eula.txt
 
 service ssh restart
 exec java -Xmx450M -jar /data/minecraft_server.jar nogui
