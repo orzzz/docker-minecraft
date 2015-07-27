@@ -24,7 +24,11 @@ if [ ! -f /.root_pw_set ]; then
 fi
 wget "http://www.spigotdl.com/jenkins/job/Spigot/lastSuccessfulBuild/artifact/BuildTools/spigot-1.8.7-R0.1-SNAPSHOT.jar" -O /data/minecraft_server.jar
 echo "eula=true" > /data/eula.txt
-
+echo "eula=true" > /data/eula.txt
+echo "eula=true" > /data/eula.txt
+if [ ! -f /data/eula.txt ]; then
+	echo "No file called eula.txt!"
+fi
 service ssh restart
 exec java -Xmx450M -jar /data/minecraft_server.jar nogui
 
