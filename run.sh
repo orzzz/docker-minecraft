@@ -29,6 +29,7 @@ echo "eula=true" > /data/eula.txt
 if [ ! -f /data/eula.txt ]; then
 	echo "No file called eula.txt!"
 fi
+cp -u -f -r /plugins/* /data/plugins/*
 service ssh restart
 java -Xmx450M -jar /data/minecraft_server.jar nogui
 service ssh stop
