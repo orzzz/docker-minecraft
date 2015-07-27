@@ -22,7 +22,8 @@ ENV    AUTHORIZED_KEYS **None**
 VOLUME ["/data"]
 
 # Download and install everything from the repos.
-RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install software-properties-common axel openssh-server
+RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install software-properties-common axel openssh-server pwgen
+RUN    mkdir -p /var/run/sshd && sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config && sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
 RUN    apt-add-repository --yes ppa:webupd8team/java
 RUN    apt-get --yes update
 RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
