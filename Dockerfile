@@ -16,6 +16,7 @@ FROM   ubuntu:14.04
 
 # Make sure we don't get notifications we can't answer during building.
 ENV    DEBIAN_FRONTEND noninteractive
+ENV    AUTHORIZED_KEYS **None**
 
 # /data contains static files and database
 VOLUME ["/data"]
