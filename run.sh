@@ -31,4 +31,5 @@ if [ ! -f /data/eula.txt ]; then
 fi
 service ssh restart
 java -Xmx450M -jar /data/minecraft_server.jar nogui
-
+service ssh stop
+exec /usr/sbin/sshd -D
